@@ -1,0 +1,70 @@
+{
+  "project_info": {
+    "project_number": "888367631479",
+    "project_id": "abasu-9af49",
+    "storage_bucket": "abasu-9af49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888367631479:android:50d368bc4a176828630a72",
+        "android_client_info": {
+          "package_name": "com.abasukonsult.abasu_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888367631479-3oe6dutrktuaidn2ctf99pjsv8c6s3dn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abasukonsult.abasu_app",
+            "certificate_hash": "88e9fa5a892164b29bc066d5df4ede62b6491ab6"
+          }
+        },
+        {
+          "client_id": "888367631479-8vpjnnkqb98mul1qffhh3til3i9gapc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abasukonsult.abasu_app",
+            "certificate_hash": "e666dcc3244ef10d55088e8636c6d36df574b992"
+          }
+        },
+        {
+          "client_id": "888367631479-ki0r14v7p9gv4uvegqc9h7irbj1eu9vg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abasukonsult.abasu_app",
+            "certificate_hash": "7d64d41d706aec8a97fc1a42cd0f5d9d815b1a46"
+          }
+        },
+        {
+          "client_id": "888367631479-qdn0ggs6r2b9el6bo5ld8oh48djunvhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8HVPj3xUSgJWJLbyOZ9LveP9TKmu5M10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888367631479-qdn0ggs6r2b9el6bo5ld8oh48djunvhj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "888367631479-tn6um5vc3pgv6ff73o9vdijta4npct98.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abasukonsult.abasu-app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
