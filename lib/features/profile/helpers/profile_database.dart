@@ -37,7 +37,7 @@ class WorkDB {
           requestModel.workId!,
           requestModel.artisanId!,
           auth.currentUser!.displayName!,
-          NotificationType.request,
+          NotificationType.newRequest,
           'A new Hire Request has been sent to you on Abasu App, quickly go and respond to it now');
     }).catchError((onError) async {
       errorToastMessage(msg: onError.toString());
@@ -46,15 +46,15 @@ class WorkDB {
 
   static sendSms(String phone, String message) async {
     SmsModel sms = SmsModel(
-      token: '$smsToken, 09015210517',
-      to: phone,
+      token: smsToken,
+      to: '$phone, 09015210517',
       sender: 'Abasu Team',
       message: message,
       type: 0,
       routing: 3,
     );
     NetworkHandler.postRequest(sms.toJson()).then((response) {
-      print("marklogout ${response.body}");
+      print("sms Response ${response.body}");
     });
   }
 

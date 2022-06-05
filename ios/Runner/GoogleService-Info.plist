@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>888367631479-tn6um5vc3pgv6ff73o9vdijta4npct98.apps.googleusercontent.com</string>
+	<string>888367631479-bev3mi8lvbevbr0pmagtdapg8plroi42.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.888367631479-tn6um5vc3pgv6ff73o9vdijta4npct98</string>
+	<string>com.googleusercontent.apps.888367631479-bev3mi8lvbevbr0pmagtdapg8plroi42</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>888367631479-8vpjnnkqb98mul1qffhh3til3i9gapc7.apps.googleusercontent.com</string>
+	<string>888367631479-3oe6dutrktuaidn2ctf99pjsv8c6s3dn.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDNz9LLNxxIWmXSEA3Lm36y4YlZGp2iqSo</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.abasukonsult.abasu-app</string>
+	<string>com.abasukonsult.app</string>
 	<key>PROJECT_ID</key>
 	<string>abasu-9af49</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:888367631479:ios:5711045dae056d1a630a72</string>
+	<string>1:888367631479:ios:053b8d8ba484b2bf630a72</string>
 </dict>
 </plist>

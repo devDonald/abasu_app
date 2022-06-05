@@ -30,6 +30,9 @@ var requestRef = firebaseFirestore.collection('artisanRequests');
 var ordersRef = firebaseFirestore.collection('orders');
 var previousContractsRef = firebaseFirestore.collection('previousContracts');
 var contractsRef = firebaseFirestore.collection('contracts');
+var driversRef = firebaseFirestore.collection('drivers');
+const admin1 = 'sdlo9zrwXGSBZ9CtPdNUNnphumA3';
+
 const apiKey = 'AIzaSyD3RM-zLd6AhNzcBSFthoNHKcI6Ht5R49s';
 
 final orderDestination = LocationProvider();

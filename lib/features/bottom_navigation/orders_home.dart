@@ -1,3 +1,4 @@
+import 'package:abasu_app/features/order/my_order.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/themes/theme_colors.dart';
@@ -56,7 +57,7 @@ class _OrdersHomeState extends State<OrdersHome>
           )),
       body: TabBarView(
         controller: _tabController,
-        children: [Container(), const MyRequestedArtisans()],
+        children: const [ProductOrders(), MyRequestedArtisans()],
       ),
     );
   }

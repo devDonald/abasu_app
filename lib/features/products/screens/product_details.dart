@@ -1,8 +1,6 @@
 import 'package:abasu_app/core/constants/contants.dart';
 import 'package:abasu_app/features/products/helpers/product_database.dart';
 import 'package:abasu_app/features/products/model/cart_model.dart';
-import 'package:abasu_app/features/products/screens/product_cart.dart';
-import 'package:abasu_app/features/products/screens/view_all_products.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -494,10 +492,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             primary: Colors.red),
                                         onPressed: () {
                                           Get.back();
-                                          Get.to(() => const ViewAllProducts());
+                                          // Get.to(() => const ViewAllProducts());
                                         },
                                         child: const Text(
-                                          'Continue Shopping',
+                                          'Cancel',
                                         )),
                                     confirm: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
@@ -512,8 +510,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             totalPrice: totalPrice,
                                           ));
                                           Get.back();
-                                          Get.to(
-                                              () => const CartPage(count: 1));
                                         },
                                         child: const Text('Add to Cart')),
                                   );

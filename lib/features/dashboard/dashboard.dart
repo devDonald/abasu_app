@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import '../../core/themes/theme.dart';
 import '../../core/widgets/badge_widget.dart';
 import '../../core/widgets/exit_popup_widget.dart';
-import '../notification/notification.dart';
+import '../notification/notification_center.dart';
 import '../profile/pages/my_profile.dart';
 import '../search/search.dart';
 import 'dashboard_controller.dart';
@@ -44,9 +44,7 @@ class DashboardPage extends GetView<CartNoteController> {
                 iconData: Icons.shopping_cart,
                 notificationCount: controller.cartCount.value,
                 onTap: () {
-                  Get.to(() => CartPage(
-                        count: controller.cartCount.value,
-                      ));
+                  Get.to(() => const CartPage());
                 },
               )),
           Obx(() => Badge(

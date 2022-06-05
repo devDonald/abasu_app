@@ -1,19 +1,26 @@
+import 'package:abasu_app/features/payment/order_model.dart';
+import 'package:abasu_app/features/products/helpers/product_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
+import 'package:get/get.dart';
 
 import '../../../core/constants/contants.dart';
 import '../../../core/themes/theme_colors.dart';
+import '../../dashboard/dashboard.dart';
+import '../../order/sub_order_model.dart';
 
 class CardSupport extends StatefulWidget {
   final int totalPrice;
-  final List<Map> items;
+  final List<Products> items;
   final bool withDelivery;
+  final String destination;
   const CardSupport(
       {Key? key,
       required this.totalPrice,
       required this.items,
-      required this.withDelivery})
+      required this.withDelivery,
+      required this.destination})
       : super(key: key);
 
   @override
@@ -159,11 +166,53 @@ class _CardSupportState extends State<CardSupport> {
         customer: customer,
         paymentOptions: "card, payattitude",
         customization: Customization(title: "Abasu Product Order Payment"),
-        isTestMode: false);
+        isTestMode: true);
     final ChargeResponse response = await flutterwave.charge();
     if (response != null) {
-      showLoading(response.status!);
-      print("${response.success}");
+      print('status: ${response.status}');
+      if (response.status == 'success') {
+        OrderModel model = OrderModel(
+          orderId: docRef.id,
+          driverId: '',
+          customerId: auth.currentUser!.uid,
+          destination: widget.destination,
+          distance: '',
+          price: widget.totalPrice,
+          status: 'Payment Successful',
+          timestamp: timestamp,
+          createdAt: createdAt,
+          lat: 0.0,
+          long: 0.0,
+          withDelivery: widget.withDelivery,
+          products: widget.items,
+          customerName: nameController.text,
+          phone: phoneNumberController.text,
+          email: emailController.text,
+        );
+        docRef.set(model.toJson()).then((value) async {
+          await usersRef.doc(auth.currentUser!.uid).update({
+            'cart': 0,
+            'info': FieldValue.increment(1),
+          });
+          await cartRef
+              .doc(auth.currentUser!.uid)
+              .collection('myCart')
+              .get()
+              .then((snapshot) {
+            for (DocumentSnapshot ds in snapshot.docs) {
+              ds.reference.delete();
+            }
+            ;
+          });
+
+          ProductsDB.sendNotification(docRef.id, admin1, nameController.text,
+              'New Order', 'New Order by ${nameController.text}');
+          Get.offAll(() => DashboardPage());
+          successToastMessage(msg: "order payment successful");
+        });
+      } else {
+        showLoading(response.status!);
+      }
     } else {
       showLoading("No Response!");
     }

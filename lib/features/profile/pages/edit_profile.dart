@@ -232,7 +232,7 @@ class _EditProfileState extends State<EditProfile> {
                                         'code': _code,
                                         'address': _address.text,
                                         'charge': widget.user.isArtisan!
-                                            ? int.parse(_charge.text)
+                                            ? _charge.text
                                             : '0',
                                         'dialCode': dialCode,
                                         'phone': _phone.text,
