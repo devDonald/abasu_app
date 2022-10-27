@@ -1,59 +1,71 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../core/constants/contants.dart';
-import '../../../core/widgets/abasu_tags.dart';
 
 class DriverModel {
-  String? userId;
+  String? driverId;
   String? name;
   String? country;
   String? photo;
   String? email;
   String? phone;
   String? code;
-  String? type, address;
+  String? gender, address;
   String? dialCode;
-  dynamic skills;
+  String? marital,
+      status,
+      vehicleManufacturer,
+      vehicleColour,
+      plateNo,
+      bankName,
+      accountName,
+      accountNo,
+      vehicleModel;
   double? latitude = 0.0, longitude = 0.0;
-  String? specialization;
-  String? charge;
-  int? info = 0, cart = 0;
-  dynamic previousWorks;
-  bool? isOnline = false, isVerified = false, isHired = false, isTop = false;
-  bool? isOwner = false, isAdmin = false, isArtisan = false, isTagAdded = false;
-  List<Tags> addedTags = [];
+  String? experience;
+  String? licenceNo;
+  int? wallet = 0, info = 0;
+  String? token;
+  bool? isOnline = false, isVerified = false, isHired = false;
+  bool? isOwner = false;
 
-  DriverModel(
-      {this.userId,
-      this.name,
-      this.country,
-      this.photo,
-      this.email,
-      this.phone,
-      this.code,
-      this.dialCode,
-      this.type,
-      this.skills,
-      this.specialization,
-      this.isOwner,
-      this.address,
-      this.info,
-      this.cart,
-      this.isOnline,
-      this.previousWorks,
-      this.isAdmin,
-      this.isVerified,
-      this.isHired,
-      this.isArtisan,
-      this.longitude,
-      this.latitude,
-      this.isTop,
-      this.charge});
+  DriverModel({
+    this.driverId,
+    this.name,
+    this.country,
+    this.photo,
+    this.email,
+    this.phone,
+    this.code,
+    this.dialCode,
+    this.gender,
+    this.marital,
+    this.experience,
+    this.isOwner,
+    this.address,
+    this.wallet,
+    this.info,
+    this.isOnline,
+    this.isVerified,
+    this.isHired,
+    this.longitude,
+    this.latitude,
+    this.accountName,
+    this.accountNo,
+    this.bankName,
+    this.licenceNo,
+    this.plateNo,
+    this.vehicleColour,
+    this.vehicleManufacturer,
+    this.vehicleModel,
+    this.token,
+    this.status,
+  });
 
   updateUser() {}
   toJson() {
     return {
-      "userId": userId,
+      "driverId": driverId,
       "email": email,
       'name': name,
       'country': country,
@@ -62,20 +74,26 @@ class DriverModel {
       'dialCode': dialCode,
       'phone': phone,
       'token': '',
-      'type': type,
+      'gender': gender,
       'isOnline': isOnline,
-      'info': info,
-      'previousWorks': previousWorks,
-      'skills': skills,
+      'wallet': wallet,
+      'marital': marital,
       'longitude': longitude,
       'latitude': latitude,
-      'specialization': specialization,
-      'charge': charge,
+      'experience': experience,
+      'licenceNo': licenceNo,
       'address': address,
       'isHired': isHired,
       'isVerified': isVerified,
-      'cart': cart,
-      'isTop': isTop,
+      'info': info,
+      'accountName': accountName,
+      'accountNo': accountNo,
+      'bankName': bankName,
+      'plateNo': plateNo,
+      'vehicleColour': vehicleColour,
+      'vehicleManufacturer': vehicleManufacturer,
+      'vehicleModel': vehicleModel,
+      'status': 'UnVerified'
     };
   }
 
@@ -84,44 +102,32 @@ class DriverModel {
     email = snapshot['email'];
     country = snapshot['country'];
     photo = snapshot['photo'];
-    userId = snapshot['userId'];
+    driverId = snapshot['driverId'];
     phone = snapshot['phone'];
     code = snapshot['code'];
     dialCode = snapshot['dialCode'];
-    type = snapshot['type'];
+    gender = snapshot['gender'];
     address = snapshot['address'];
-    charge = snapshot['charge'];
-    specialization = snapshot['specialization'];
-    skills = snapshot['skills'];
-    previousWorks = snapshot['previousWorks'];
+    licenceNo = snapshot['licenceNo'];
+    experience = snapshot['experience'];
+    marital = snapshot['marital'];
     isOnline = snapshot['isOnline'];
-    cart = snapshot['cart'];
     info = snapshot['info'];
-    isTop = snapshot['isTop'];
+    wallet = snapshot['wallet'];
     isVerified = snapshot['isVerified'];
     isHired = snapshot['isHired'];
-    if (auth.currentUser!.uid == snapshot['userId']) {
+    accountNo = snapshot['accountNo'];
+    accountName = snapshot['accountName'];
+    bankName = snapshot['bankName'];
+    plateNo = snapshot['plateNo'];
+    status = snapshot['status'];
+    vehicleModel = snapshot['vehicleModel'];
+    vehicleManufacturer = snapshot['vehicleManufacturer'];
+    vehicleColour = snapshot['vehicleColour'];
+    if (auth.currentUser!.uid == snapshot['driverId']) {
       isOwner = true;
     } else {
       isOwner = false;
-    }
-    if (snapshot['type'] == 'Artisan') {
-      isArtisan = true;
-    } else {
-      isArtisan = false;
-    }
-    if (snapshot['email'] == 'donaldebuga@gmail.com' ||
-        snapshot['email'] == 'abasuteam@gmail.com' ||
-        snapshot['email'] == 'fwangkatdaburak@gmail.com') {
-      isAdmin = true;
-    }
-    if (snapshot['skills'] != null) {
-      isTagAdded = true;
-      for (var i = 0; i < skills.length; i++) {
-        addedTags.add(Tags(tag: skills[i]));
-      }
-    } else {
-      isTagAdded = false;
     }
   }
 }

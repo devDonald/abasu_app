@@ -31,7 +31,14 @@ var ordersRef = firebaseFirestore.collection('orders');
 var previousContractsRef = firebaseFirestore.collection('previousContracts');
 var contractsRef = firebaseFirestore.collection('contracts');
 var driversRef = firebaseFirestore.collection('drivers');
-const admin1 = 'sdlo9zrwXGSBZ9CtPdNUNnphumA3';
+var placesRef = firebaseFirestore.collection('places');
+var productReviewsRef = firebaseFirestore.collection('productReviews');
+var artisanReviewsRef = firebaseFirestore.collection('artisanReviews');
+
+const admin1 = 'sdlo9zrwXGSBZ9CtPdNUNnphumA3'; //Abasu
+const admin2 = 'B0wB8jxiblgPwAGOhb7bqGrGiz52'; //Donald Ebuga
+const admin3 = 'sdlo9zrwXGSBZ9CtPdNUNnphumA3';
+const adminSms1 = '09015210517';
 
 const apiKey = 'AIzaSyD3RM-zLd6AhNzcBSFthoNHKcI6Ht5R49s';
 
@@ -133,6 +140,12 @@ bool validateForm(String email, String name, String password, String country,
     return false;
   } else if (phone.isEmpty) {
     errorToastMessage(msg: 'phone number cannot be empty');
+    return false;
+  } else if (!phone.startsWith('0')) {
+    errorToastMessage(msg: 'phone number must start with 0');
+    return false;
+  } else if (phone.length < 11) {
+    errorToastMessage(msg: 'phone number must be 11 numbers');
     return false;
   } else if (code.isEmpty) {
     errorToastMessage(msg: 'country code is empty, please select again');

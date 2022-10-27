@@ -1,6 +1,7 @@
 import 'package:abasu_app/features/artisans/hire_artisan.dart';
 import 'package:abasu_app/features/profile/pages/my_previous_works.dart';
 import 'package:abasu_app/features/profile/pages/user_profile_info.dart';
+import 'package:abasu_app/features/reviews/artisans/artisan_review_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -145,6 +146,14 @@ class HireArtisanProfile extends StatelessWidget {
                             ));
                       },
                       tag: 'Hire Artisan',
+                    ),
+                    ProfileTag(
+                      onTap: () {
+                        Get.to(() => ArtisanReviewsPage(
+                              user: user,
+                            ));
+                      },
+                      tag: 'Reviews',
                     ),
                   ],
                 )

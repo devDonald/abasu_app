@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/contants.dart';
+import '../model/product.dart';
 import '../screens/product_details.dart';
 import 'buttons.dart';
 
@@ -16,6 +17,7 @@ class ProductCard extends StatelessWidget {
   final int? price, formerPrice;
   final List<dynamic>? productImages;
   final bool isAdmin, isTop;
+  final Product product;
 
   const ProductCard(
       {Key? key,
@@ -28,7 +30,8 @@ class ProductCard extends StatelessWidget {
       required this.productId,
       required this.subCategory,
       required this.isTop,
-      required this.isAdmin})
+      required this.isAdmin,
+      required this.product})
       : super(key: key);
 
   @override
@@ -66,6 +69,7 @@ class ProductCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Get.to(() => ProductDetails(
+                product: product,
                 formerPrice: formerPrice,
                 isTop: isTop,
                 itemDescription: description,

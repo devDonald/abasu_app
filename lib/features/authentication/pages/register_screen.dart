@@ -525,7 +525,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   Flexible(
                                     flex: 1,
                                     child: CountryCodeButton(
-                                      height: 60,
+                                      height: 65,
                                       onSelectCode: (String dialCode,
                                           String flagUri, String country) {
                                         _dialCode = dialCode;
@@ -556,8 +556,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         // width: double.infinity,
                                         // height: 40.0,
                                         child: TextFormField(
-                                          style: const TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontSize: 16),
                                           controller: _phoneNumber,
+                                          maxLength: 11,
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
                                           textInputAction: TextInputAction.done,
@@ -565,7 +566,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           textCapitalization:
                                               TextCapitalization.none,
                                           decoration: InputDecoration(
-                                            hintText: '8056452333',
+                                            hintText: '08056452333',
                                             prefixIcon: const Icon(Icons.phone),
                                             contentPadding:
                                                 const EdgeInsets.fromLTRB(

@@ -43,7 +43,8 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void isFirstTime() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences
+        .getInstance(); //create an instance of shared preference class
     bool? isFirstTime = prefs.getBool('first_time');
     String? userType = prefs.getString('type');
 

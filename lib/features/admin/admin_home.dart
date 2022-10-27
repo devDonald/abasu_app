@@ -1,5 +1,8 @@
 import 'package:abasu_app/features/admin/admin_contract/admin_contracts_home.dart';
 import 'package:abasu_app/features/admin/admin_contract/admin_previous_contracts.dart';
+import 'package:abasu_app/features/admin/drivers/all_drivers.dart';
+import 'package:abasu_app/features/admin/orders/admin_order_home.dart';
+import 'package:abasu_app/features/admin/places/places_home.dart';
 import 'package:abasu_app/features/admin/products/admin_top_products.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,14 +90,14 @@ class _AdminHomeState extends State<AdminHome> {
             icon: Icons.car_rental,
             title: 'Manage Drivers',
             onTap: () async {
-              Get.to(() => const AdminProducts());
+              Get.to(() => const AbasuDrivers());
             },
           ),
           HomeCard(
             icon: Icons.shopping_bag,
             title: 'Manage Orders',
             onTap: () async {
-              Get.to(() => const AdminProducts());
+              Get.to(() => const AdminOrderHome());
             },
           ),
           HomeCard(
@@ -123,6 +126,13 @@ class _AdminHomeState extends State<AdminHome> {
             title: 'Previous Contracts',
             onTap: () async {
               Get.to(() => const AdminPreviousContract(isAdmin: true));
+            },
+          ),
+          HomeCard(
+            icon: Icons.place,
+            title: 'Manage Places',
+            onTap: () async {
+              Get.to(() => const PlacesHome());
             },
           ),
         ],

@@ -104,11 +104,13 @@ class OrderModel {
     }
   }
   Future<void> loadCustomer() async {
-    DocumentSnapshot ds = await driversRef.doc(driverId).get();
+    if (driverId != '') {
+      DocumentSnapshot ds = await driversRef.doc(driverId).get();
 
-    driver = DriverModel.fromSnapshot(ds);
-    driverName = customer!.name;
-    driverPhoto = customer!.photo;
+      driver = DriverModel.fromSnapshot(ds);
+      driverName = driver!.name;
+      driverPhoto = driver!.photo;
+    }
 
     DocumentSnapshot ds2 = await usersRef.doc(customerId).get();
     customer = UserModel.fromSnapshot(ds2);

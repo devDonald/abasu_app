@@ -155,6 +155,7 @@ class _HomeState extends State<Home> {
                           Product product =
                               Product.fromSnapshot(snapshot.data!.docs[index]);
                           return ProductCard(
+                            product: product,
                             isTop: product.isTop!,
                             isAdmin: false,
                             subCategory: product.subCategory,

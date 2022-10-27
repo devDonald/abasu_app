@@ -102,25 +102,4 @@ class ProductsDB {
       await storageReference.child(filePath).delete();
     }
   }
-
-  static void sendNotification(String postId, String receiverId,
-      String senderName, String type, message) {
-    // add a notification to the postOwner's activity feed only if comment made by OTHER user (to avoid getting notification for our own like)
-    bool isNotPostOwner = auth.currentUser!.uid != receiverId;
-    if (!isNotPostOwner) {
-      DocumentReference _docRef =
-          root.collection('feed').doc(receiverId).collection('feeds').doc();
-      _docRef.set({
-        "type": type, //type of notification
-        "senderId": auth.currentUser!.uid,
-        "seen": false,
-        "message": message, //comment made
-        "receiverId": receiverId,
-        "postId": postId,
-        'createdAt': createdAt,
-        "timestamp": timestamp,
-        "senderName": senderName,
-      });
-    }
-  }
 }

@@ -66,6 +66,7 @@ class _AdminTopProductsState extends State<AdminTopProducts> {
             itemBuilder: (context, snapshot, index) {
               Product product = Product.fromSnapshot(snapshot[index]);
               return ProductCard(
+                product: product,
                 isAdmin: true,
                 isTop: product.isTop!,
                 subCategory: product.subCategory,

@@ -1,8 +1,10 @@
 import 'package:abasu_app/core/constants/contants.dart';
 import 'package:abasu_app/features/order/order_card.dart';
+import 'package:abasu_app/features/order/order_details.dart';
 import 'package:abasu_app/features/payment/order_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:paginate_firestore/paginate_firestore.dart';
 
 class ProductOrders extends StatelessWidget {
@@ -29,7 +31,9 @@ class ProductOrders extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<OrderModel> snap) {
               if (snap.hasData) {}
               return OrderHeaderCard(
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => OrderDetails(model: _work, isAdmin: false));
+                },
                 model: _work,
               );
             },

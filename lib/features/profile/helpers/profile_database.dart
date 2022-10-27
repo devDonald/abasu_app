@@ -10,6 +10,7 @@ import 'package:path/path.dart' as Path;
 
 import '../../../core/constants/contants.dart';
 import '../../../core/constants/network_handler.dart';
+import '../../notification/send_notification.dart';
 
 class WorkDB {
   static addPreviousWorks(WorkModel todomodel) async {
@@ -33,12 +34,12 @@ class WorkDB {
           .doc(requestModel.artisanId)
           .update({"info": FieldValue.increment(1)});
       successToastMessage(msg: 'Request sent to Artisan Successfully');
-      sendNotification(
+      SendNoti.sendNow(
           requestModel.workId!,
           requestModel.artisanId!,
           auth.currentUser!.displayName!,
           NotificationType.newRequest,
-          'A new Hire Request has been sent to you on Abasu App, quickly go and respond to it now');
+          'A new Work Request has been sent to you on Abasu App, Quickly go my profile, My Requests and respond to it');
     }).catchError((onError) async {
       errorToastMessage(msg: onError.toString());
     });

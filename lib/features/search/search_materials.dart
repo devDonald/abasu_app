@@ -73,6 +73,7 @@ class _SearchMaterialsState extends State<SearchMaterials> {
               Product product = Product.fromSnapshot(snapshot[index]);
               return filter == ""
                   ? ProductCard(
+                      product: product,
                       isAdmin: false,
                       isTop: product.isTop!,
                       subCategory: product.subCategory,
@@ -88,6 +89,7 @@ class _SearchMaterialsState extends State<SearchMaterials> {
                           .toLowerCase()
                           .contains(filter.toLowerCase())
                       ? ProductCard(
+                          product: product,
                           isTop: product.isTop!,
                           isAdmin: false,
                           subCategory: product.subCategory,

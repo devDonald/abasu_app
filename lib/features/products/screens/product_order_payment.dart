@@ -1,5 +1,7 @@
+import 'package:abasu_app/features/notification/notification_type.dart';
+import 'package:abasu_app/features/notification/send_notification.dart';
 import 'package:abasu_app/features/payment/order_model.dart';
-import 'package:abasu_app/features/products/helpers/product_database.dart';
+import 'package:abasu_app/features/sms/sms_file.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave_standard/flutterwave.dart';
@@ -205,8 +207,12 @@ class _CardSupportState extends State<CardSupport> {
             ;
           });
 
-          ProductsDB.sendNotification(docRef.id, admin1, nameController.text,
-              'New Order', 'New Order by ${nameController.text}');
+          SendNoti.sendNow(docRef.id, admin1, nameController.text,
+              NotificationType.newOrder, 'New Order by ${nameController.text}');
+          SendNoti.sendAdmin(docRef.id, admin1, nameController.text,
+              NotificationType.newOrder, 'New Order by ${nameController.text}');
+          SMSClass().sendSMS(adminSms1,
+              'A new Order has been placed by ${nameController.text}, kindly go to Abasu app and process the order');
           Get.offAll(() => DashboardPage());
           successToastMessage(msg: "order payment successful");
         });

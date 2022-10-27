@@ -13,7 +13,7 @@ class UserModel {
   String? code;
   String? type, address;
   String? dialCode;
-  dynamic skills;
+  List<dynamic>? skills;
   double? latitude = 0.0, longitude = 0.0;
   String? specialization;
   String? charge;
@@ -117,8 +117,8 @@ class UserModel {
     }
     if (snapshot['skills'] != null) {
       isTagAdded = true;
-      for (var i = 0; i < skills.length; i++) {
-        addedTags.add(Tags(tag: skills[i]));
+      for (var i = 0; i < skills!.length; i++) {
+        addedTags.add(Tags(tag: skills![i]));
       }
     } else {
       isTagAdded = false;
