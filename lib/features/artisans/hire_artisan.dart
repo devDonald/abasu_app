@@ -13,6 +13,7 @@ import '../../../../core/themes/theme_colors.dart';
 import '../../../../core/widgets/add_photo_buttons.dart';
 import '../../../../core/widgets/customFullScreenDialog.dart';
 import '../../../../core/widgets/primary_button.dart';
+import '../sms/sms_file.dart';
 
 class HireArtisan extends StatefulWidget {
   static const String id = 'HireArtisan';
@@ -76,7 +77,7 @@ class _HireArtisanState extends State<HireArtisan> {
 
   TwilioFlutter? twilioFlutter;
 
-  void _uploadWork() async {
+  void _sendRequest() async {
     try {
       if (_image.isNotEmpty) {
         CustomFullScreenDialog.showDialog();
@@ -96,8 +97,11 @@ class _HireArtisanState extends State<HireArtisan> {
           artisanId: widget.artisanId,
         );
         await WorkDB.hireArtisan(model);
-        sendSms(widget.number);
-        sendSms('09015210517');
+        SMSClass().sendSMS(widget.number,
+            'Hello ${widget.artisanName}, A new Work Request has been sent to you on Abasu App, quickly go and respond to it now');
+        SMSClass().sendSMS(adminSms1,
+            'The Artisan ${widget.artisanName}, has a new Work Request on Abasu, quickly reach out to him to respond immediately');
+
         CustomFullScreenDialog.cancelDialog();
       } else {
         final RequestModel model = RequestModel(
@@ -115,8 +119,10 @@ class _HireArtisanState extends State<HireArtisan> {
           artisanId: widget.artisanId,
         );
         await WorkDB.hireArtisan(model);
-        sendSms(widget.number);
-        sendSms('09015210517');
+        SMSClass().sendSMS(widget.number,
+            'Hello ${widget.artisanName}, A new Work Request has been sent to you on Abasu App, quickly go and respond to it now');
+        SMSClass().sendSMS(adminSms1,
+            'The Artisan ${widget.artisanName}, has a new Work Request on Abasu, quickly reach out to him to respond immediately');
       }
 
       Navigator.of(context).pop();
@@ -124,19 +130,19 @@ class _HireArtisanState extends State<HireArtisan> {
     //bodyValue.clear();
   }
 
-  void sendSms(receiverNo) async {
-    twilioFlutter!.sendSMS(
-        toNumber: '+234$receiverNo',
-        messageBody:
-            'Hello ${widget.artisanName}, A new Work Request has been sent to you on Abasu App, quickly go and respond to it now');
-  }
+  // void sendSms(receiverNo) async {
+  //   twilioFlutter!.sendSMS(
+  //       toNumber: '+234$receiverNo',
+  //       messageBody:
+  //           '');
+  // }
 
   @override
   void initState() {
-    twilioFlutter = TwilioFlutter(
-        accountSid: 'AC2c97294f03b32072aee28f9672656a98',
-        authToken: '800f521338481b407a4fd3b09e2668a4',
-        twilioNumber: '+2348036795246');
+    // twilioFlutter = TwilioFlutter(
+    //     accountSid: 'AC2c97294f03b32072aee28f9672656a98',
+    //     authToken: '800f521338481b407a4fd3b09e2668a4',
+    //     twilioNumber: '+2348036795246');
     super.initState();
   }
 
@@ -338,11 +344,11 @@ class _HireArtisanState extends State<HireArtisan> {
                   blurRadius: 3.0,
                   roundedEdge: 5.0,
                   color: ThemeColors.primaryColor,
-                  buttonTitle: 'Post Previous Work',
+                  buttonTitle: 'Send Request',
                   onTap: () {
                     if (validateRequest(_workTitle.text, _description.text,
                         _category, _budget.text, _duration.text)) {
-                      _uploadWork();
+                      _sendRequest();
                     }
                   },
                 ),

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
   String? productName, category, subCategory, adminId, productId, description;
-  int? unitPrice, availableUnits, formerPrice;
-  dynamic imageUrls, imageNames, reviews, ratings, likes;
+  int? unitPrice, availableUnits, formerPrice, ratings, reviews;
+  dynamic imageUrls, imageNames, likes;
   bool? approved, isTop;
   double? latitude, longitude;
 

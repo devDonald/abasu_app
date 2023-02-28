@@ -10,6 +10,7 @@ import 'package:path/path.dart' as Path;
 
 import '../../../core/constants/contants.dart';
 import '../../../core/constants/network_handler.dart';
+import '../../notification/send_notification.dart';
 
 class WorkDB {
   static addPreviousWorks(WorkModel todomodel) async {
@@ -33,12 +34,12 @@ class WorkDB {
           .doc(requestModel.artisanId)
           .update({"info": FieldValue.increment(1)});
       successToastMessage(msg: 'Request sent to Artisan Successfully');
-      sendNotification(
+      SendNoti.sendNow(
           requestModel.workId!,
           requestModel.artisanId!,
           auth.currentUser!.displayName!,
-          NotificationType.request,
-          'A new Hire Request has been sent to you on Abasu App, quickly go and respond to it now');
+          NotificationType.newRequest,
+          'A new Work Request has been sent to you on Abasu App, Quickly go my profile, My Requests and respond to it');
     }).catchError((onError) async {
       errorToastMessage(msg: onError.toString());
     });
@@ -46,15 +47,15 @@ class WorkDB {
 
   static sendSms(String phone, String message) async {
     SmsModel sms = SmsModel(
-      token: '$smsToken, 09015210517',
-      to: phone,
+      token: smsToken,
+      to: '$phone, 09015210517',
       sender: 'Abasu Team',
       message: message,
       type: 0,
       routing: 3,
     );
     NetworkHandler.postRequest(sms.toJson()).then((response) {
-      print("marklogout ${response.body}");
+      print("sms Response ${response.body}");
     });
   }
 

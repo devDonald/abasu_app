@@ -69,6 +69,7 @@ class _ProductsState extends State<Products> {
             itemBuilder: (context, snapshot, index) {
               Product product = Product.fromSnapshot(snapshot[index]);
               return ProductCard(
+                product: product,
                 isTop: product.isTop!,
                 isAdmin: widget.isAdmin,
                 subCategory: product.subCategory,

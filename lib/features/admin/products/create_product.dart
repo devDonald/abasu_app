@@ -85,7 +85,7 @@ class _CreateProductState extends State<CreateProduct> {
           adminId: uid,
           imageUrls: url,
           imageNames: _imageNames,
-          reviews: {},
+          reviews: 0,
           likes: {},
           isTop: false,
           longitude: longitude,
@@ -93,7 +93,7 @@ class _CreateProductState extends State<CreateProduct> {
           availableUnits: 1000,
           unitPrice: int.parse(_currentPrice.text),
           formerPrice: int.parse(_formerPrice.text),
-          ratings: {},
+          ratings: 0,
           approved: true,
         );
         await ProductsDB.addProduct(model);

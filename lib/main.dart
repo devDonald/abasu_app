@@ -1,4 +1,5 @@
 import 'package:abasu_app/features/cart_notification_controlloer.dart';
+import 'package:abasu_app/features/notification/notification.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import 'features/dashboard/dashboard_controller.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  initMessaging();
   //await GetStorage.init();
   //await Upgrader.clearSavedSettings(); // REMOVE this for release builds
   Get.put<AuthController>(AuthController());

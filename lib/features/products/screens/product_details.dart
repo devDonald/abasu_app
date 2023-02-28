@@ -1,8 +1,7 @@
 import 'package:abasu_app/core/constants/contants.dart';
 import 'package:abasu_app/features/products/helpers/product_database.dart';
 import 'package:abasu_app/features/products/model/cart_model.dart';
-import 'package:abasu_app/features/products/screens/product_cart.dart';
-import 'package:abasu_app/features/products/screens/view_all_products.dart';
+import 'package:abasu_app/features/reviews/products/product_review_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +12,7 @@ import 'package:get/get.dart';
 import '../../../core/widgets/other_widgets.dart';
 import '../../admin/products/edit_product.dart';
 import '../../home/pages/view_event_image.dart';
+import '../model/product.dart';
 
 class ProductDetails extends StatefulWidget {
   final String? itemName, itemId;
@@ -24,22 +24,25 @@ class ProductDetails extends StatefulWidget {
   final String? itemCategory;
   final double? itemRating;
   final bool isAdmin, isTop;
+  final Product product;
   // bool isfavorited;
 
-  ProductDetails({
-    this.itemName,
-    this.itemSubCategory,
-    this.itemDescription,
-    this.itemPrice,
-    this.itemQuantity,
-    this.itemCategory,
-    this.itemRating,
-    this.itemId,
-    required this.imageUrl,
-    required this.isAdmin,
-    required this.isTop,
-    required this.formerPrice,
-  });
+  const ProductDetails(
+      {Key? key,
+      this.itemName,
+      this.itemSubCategory,
+      this.itemDescription,
+      this.itemPrice,
+      this.itemQuantity,
+      this.itemCategory,
+      this.itemRating,
+      this.itemId,
+      required this.imageUrl,
+      required this.isAdmin,
+      required this.isTop,
+      required this.formerPrice,
+      required this.product})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -266,10 +269,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                           children: <Widget>[
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const <Widget>[
-                                Icon(Icons.star,
-                                    color: Colors.blue, size: 20.0),
-                                Text("0.0"),
+                              children: <Widget>[
+                                widget.product.reviews! <= 0
+                                    ? _reviewsStarWidget(0)
+                                    : _reviewsStarWidget(
+                                        widget.product.ratings! ~/
+                                            widget.product.reviews!)
                               ],
                             ),
                             const SizedBox(height: 20.0),
@@ -459,78 +464,74 @@ class _ProductDetailsState extends State<ProductDetails> {
                   decoration: const BoxDecoration(
                       // color: Theme.of(context).primaryColor
                       ),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        SizedBox(
-                          width: (screenSize.width - 20) / 2,
-                          child: const Text(
-                            'REVIEWS(20)',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(
+                        width: (screenSize.width - 20) / 2,
+                        child: RaisedButton(
+                          child: Text('REVIEWS (${widget.product.reviews})'),
+                          color: Colors.red,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            Get.to(() =>
+                                ProductReviewsPage(product: widget.product));
+                          },
                         ),
-                        SizedBox(
-                            width: (screenSize.width - 100) / 2,
-                            child: RaisedButton(
-                              color: Colors.red,
-                              textColor: Colors.white,
-                              child: const Text("Add to Cart"),
-                              onPressed: () {
-                                if (quantity.text != '') {
-                                  Get.defaultDialog(
-                                    title: 'Add to Cart',
-                                    middleText:
-                                        ' Do you want to Add ${widget.itemName} to your Cart',
-                                    barrierDismissible: false,
-                                    radius: 25,
-                                    cancel: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.red),
-                                        onPressed: () {
-                                          Get.back();
-                                          Get.to(() => const ViewAllProducts());
-                                        },
-                                        child: const Text(
-                                          'Continue Shopping',
-                                        )),
-                                    confirm: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.green),
-                                        onPressed: () {
-                                          ProductsDB.addToCart(CartModel(
-                                            productName: widget.itemName,
-                                            imageLink: imageLink,
-                                            productId: widget.itemId,
-                                            unitPrice: widget.itemPrice,
-                                            quantity: int.parse(quantity.text),
-                                            totalPrice: totalPrice,
-                                          ));
-                                          Get.back();
-                                          Get.to(
-                                              () => const CartPage(count: 1));
-                                        },
-                                        child: const Text('Add to Cart')),
-                                  );
-                                } else {
-                                  Fluttertoast.showToast(
-                                      msg: "Enter quantity to purchase",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.CENTER,
-                                      timeInSecForIosWeb: 1,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 16.0);
-                                }
-                              },
-                            )),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                          width: (screenSize.width - 100) / 2,
+                          child: RaisedButton(
+                            color: Colors.red,
+                            textColor: Colors.white,
+                            child: const Text("Add to Cart"),
+                            onPressed: () {
+                              if (quantity.text != '') {
+                                Get.defaultDialog(
+                                  title: 'Add to Cart',
+                                  middleText:
+                                      ' Do you want to Add ${widget.itemName} to your Cart',
+                                  barrierDismissible: false,
+                                  radius: 25,
+                                  cancel: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.red),
+                                      onPressed: () {
+                                        Get.back();
+                                        // Get.to(() => const ViewAllProducts());
+                                      },
+                                      child: const Text(
+                                        'Cancel',
+                                      )),
+                                  confirm: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.green),
+                                      onPressed: () {
+                                        ProductsDB.addToCart(CartModel(
+                                          productName: widget.itemName,
+                                          imageLink: imageLink,
+                                          productId: widget.itemId,
+                                          unitPrice: widget.itemPrice,
+                                          quantity: int.parse(quantity.text),
+                                          totalPrice: totalPrice,
+                                        ));
+                                        Get.back();
+                                      },
+                                      child: const Text('Add to Cart')),
+                                );
+                              } else {
+                                Fluttertoast.showToast(
+                                    msg: "Enter quantity to purchase",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.red,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0);
+                              }
+                            },
+                          )),
+                    ],
                   ),
                 ),
         ),
@@ -584,4 +585,18 @@ class _ProductDetailsState extends State<ProductDetails> {
           );
         },
       );
+
+  Widget _reviewsStarWidget(int rating) {
+    var stars = <Widget>[];
+    for (int i = 0; i < 5; i++) {
+      Icon star = i < rating
+          ? const Icon(Icons.star, color: Colors.orangeAccent, size: 12)
+          : const Icon(Icons.star_border, color: Colors.grey, size: 12);
+      stars.add(star);
+    }
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: stars,
+    );
+  }
 }

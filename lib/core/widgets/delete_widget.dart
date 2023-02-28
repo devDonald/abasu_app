@@ -6,10 +6,11 @@ class DeleteWidget extends StatelessWidget {
   const DeleteWidget({
     Key? key,
     required this.delete,
-    required this.onEdit,
+    this.onEdit,
     required this.editable,
   }) : super(key: key);
-  final Function() delete, onEdit;
+  final Function() delete;
+  final Function()? onEdit;
   final bool editable;
   @override
   Widget build(BuildContext context) {

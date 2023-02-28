@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:paginate_firestore/bloc/pagination_listeners.dart';
 import 'package:paginate_firestore/paginate_firestore.dart';
 
@@ -6,6 +7,7 @@ import '../../core/constants/contants.dart';
 import '../../core/themes/theme_colors.dart';
 import '../../core/widgets/other_widgets.dart';
 import '../authentication/model/app_users_model.dart';
+import '../profile/pages/artisan_profile.dart';
 
 class SearchPeople extends StatefulWidget {
   final TextEditingController? searchController;
@@ -83,7 +85,12 @@ class _SearchPeopleState extends State<SearchPeople> {
                                 : [] //empty list,
                             ),
                         address: _users.address,
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(() => HireArtisanProfile(
+                                isAdmin: false,
+                                user: _users,
+                              ));
+                        },
                         onFollow: () {},
                       )
                     : '${_users.specialization}'
@@ -104,7 +111,12 @@ class _SearchPeopleState extends State<SearchPeople> {
                                     : [] //empty list,
                                 ),
                             address: _users.address,
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => HireArtisanProfile(
+                                    isAdmin: false,
+                                    user: _users,
+                                  ));
+                            },
                             onFollow: () {},
                           )
                         : Container();
