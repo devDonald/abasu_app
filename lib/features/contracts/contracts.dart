@@ -106,10 +106,12 @@ class Contracts extends StatelessWidget {
                   ),
                   SizedBox(
                       width: (screenSize.width - 50) / 2,
-                      child: RaisedButton(
-                        color: Colors.red,
-                        textColor: Colors.white,
-                        child: const Text("Submit Contracts"),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        ),
+                        child: Text("Submit Contracts", style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Get.to(() => const SubmitContract());
                         },

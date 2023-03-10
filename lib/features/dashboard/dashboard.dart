@@ -40,14 +40,14 @@ class DashboardPage extends GetView<CartNoteController> {
                 color: Colors.black,
                 size: 30,
               )),
-          Obx(() => Badge(
+          Obx(() => BadgeWidget(
                 iconData: Icons.shopping_cart,
                 notificationCount: controller.cartCount.value,
                 onTap: () {
                   Get.to(() => const CartPage());
                 },
               )),
-          Obx(() => Badge(
+          Obx(() => BadgeWidget(
                 iconData: Icons.notifications,
                 notificationCount: controller.notificationCount.value,
                 onTap: () {

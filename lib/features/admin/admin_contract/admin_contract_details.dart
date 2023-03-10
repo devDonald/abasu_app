@@ -427,10 +427,12 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                   children: [
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Accept Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Accept Project", style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)
@@ -446,10 +448,13 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                     const SizedBox(height: 10),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Reject Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+
+                          child: const Text("Reject Project",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)
@@ -465,10 +470,12 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                     const SizedBox(height: 10),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Ongoing Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Ongoing Project",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)
@@ -505,10 +512,12 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                   children: [
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Abandoned"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Abandoned",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)
@@ -524,10 +533,13 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                     const SizedBox(height: 10),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Ongoing Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+
+                          child: const Text("Ongoing Project",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)
@@ -543,10 +555,12 @@ class _AdminContractDetailsState extends State<AdminContractDetails> {
                     const SizedBox(height: 10),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Completed Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Completed Project",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await contractsRef
                                 .doc(widget.model!.workId)

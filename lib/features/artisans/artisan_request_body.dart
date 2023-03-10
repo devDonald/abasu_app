@@ -475,10 +475,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                   children: [
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Accept Work"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Accept Work",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Accepted',
@@ -491,10 +493,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                     const SizedBox(height: 5),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Reject Project"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Reject Project",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Rejected',
@@ -507,10 +511,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                     const SizedBox(height: 5),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Request Bidding"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Request Bidding", style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Requested Bidding',
@@ -523,10 +529,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                     const SizedBox(height: 5),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Ongoing Work"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Ongoing Work",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Ongoing',
@@ -560,10 +568,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                   children: [
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Abandoned Work"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Abandoned Work",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Abandoned',
@@ -576,10 +586,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                     const SizedBox(height: 5),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Ongoing Work"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Ongoing Work",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Ongoing',
@@ -592,10 +604,12 @@ class _ArtisanRequestDetailsState extends State<ArtisanRequestDetails> {
                     const SizedBox(height: 5),
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Completed Work"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Completed Work",style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await requestRef.doc(widget.model!.workId).update({
                               'status': 'Completed',

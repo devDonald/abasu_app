@@ -100,7 +100,11 @@ class _ArtisanReviewFormState extends State<ArtisanReviewForm> {
 
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
-            child: RaisedButton(
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                ),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   if (rating.isEqual(0.0)) {
@@ -123,8 +127,6 @@ class _ArtisanReviewFormState extends State<ArtisanReviewForm> {
                   }
                 }
               },
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.red,

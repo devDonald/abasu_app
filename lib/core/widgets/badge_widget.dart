@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
+class BadgeWidget extends StatelessWidget {
   final IconData iconData;
   final VoidCallback? onTap;
   final int notificationCount;
 
-  const Badge({
+  const BadgeWidget({
     Key? key,
     this.onTap,
     required this.iconData,

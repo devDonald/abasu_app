@@ -469,10 +469,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                     children: <Widget>[
                       SizedBox(
                         width: (screenSize.width - 20) / 2,
-                        child: RaisedButton(
-                          child: Text('REVIEWS (${widget.product.reviews})'),
-                          color: Colors.red,
-                          textColor: Colors.white,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: Text('REVIEWS (${widget.product.reviews})', style: TextStyle(color: Colors.white),),
                           onPressed: () {
                             Get.to(() =>
                                 ProductReviewsPage(product: widget.product));
@@ -481,10 +483,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       SizedBox(
                           width: (screenSize.width - 100) / 2,
-                          child: RaisedButton(
-                            color: Colors.red,
-                            textColor: Colors.white,
-                            child: const Text("Add to Cart"),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                            ),
+                            child: const Text("Add to Cart",style: TextStyle(color: Colors.white),),
                             onPressed: () {
                               if (quantity.text != '') {
                                 Get.defaultDialog(
@@ -575,7 +579,11 @@ class _ProductDetailsState extends State<ProductDetails> {
             title: Text(header),
             content: Text(message),
             actions: <Widget>[
-              FlatButton(
+          ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          ),
                 child: const Text('Ok'),
                 onPressed: () {
                   Navigator.of(context).pop();

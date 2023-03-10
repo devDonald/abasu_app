@@ -421,10 +421,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                   children: [
                     SizedBox(
                         width: (screenSize!.width - 50) / 2,
-                        child: RaisedButton(
-                          color: Colors.red,
-                          textColor: Colors.white,
-                          child: const Text("Order Received"),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                          ),
+                          child: const Text("Order Received", style: TextStyle(color: Colors.white),),
                           onPressed: () async {
                             await ordersRef.doc(widget.model!.orderId).update({
                               'status': NotificationType.orderReceived,
@@ -440,10 +442,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                     widget.isAdmin
                         ? SizedBox(
                             width: (screenSize!.width - 50) / 2,
-                            child: RaisedButton(
-                              color: Colors.red,
-                              textColor: Colors.white,
-                              child: const Text("Order Confirmed"),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                              ),
+                              child: const Text("Order Confirmed",style: TextStyle(color: Colors.white),),
                               onPressed: () async {
                                 await ordersRef
                                     .doc(widget.model!.orderId)
@@ -470,10 +474,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                     widget.isAdmin
                         ? SizedBox(
                             width: (screenSize!.width - 50) / 2,
-                            child: RaisedButton(
-                              color: Colors.red,
-                              textColor: Colors.white,
-                              child: const Text("Processing Order"),
+                            child:  ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                              ),
+                              child: const Text("Processing Order", style: TextStyle(color: Colors.white),),
                               onPressed: () async {
                                 await ordersRef
                                     .doc(widget.model!.orderId)

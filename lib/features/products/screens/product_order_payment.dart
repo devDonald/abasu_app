@@ -101,9 +101,12 @@ class _CardSupportState extends State<CardSupport> {
                 width: double.infinity,
                 height: 50,
                 margin: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-                child: RaisedButton(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  ),
                   onPressed: _onPressed,
-                  color: Colors.red,
                   child: const Text(
                     "Pay Now",
                     style: TextStyle(color: Colors.white),
@@ -168,7 +171,7 @@ class _CardSupportState extends State<CardSupport> {
         customer: customer,
         paymentOptions: "card, payattitude",
         customization: Customization(title: "Abasu Product Order Payment"),
-        isTestMode: true);
+        isTestMode: true, redirectUrl: '');
     final ChargeResponse response = await flutterwave.charge();
     if (response != null) {
       print('status: ${response.status}');
